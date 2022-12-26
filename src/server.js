@@ -1,8 +1,16 @@
-const express = require('express')
-const app = express()
+// const express = require('express')
+import express from 'express';
+import configViewEngine from './configs/viewEngine';
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
+const app = express()
+const port = 2000
+
+configViewEngine(app);
+
+app.get('/', (req, res) => {
+    res.render('index.ejs')
 })
 
-app.listen(3090)
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+})
